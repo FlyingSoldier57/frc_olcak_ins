@@ -4,38 +4,52 @@
 
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.ShooterSubsystem;
 
 
-public class ShooterCmd extends CommandBase {
-    private final double m_speed;
-    private final ShooterSubsystem m_shooter;
-  
-  public ShooterCmd(ShooterSubsystem shooter, double speed) {
-    m_speed = speed;
-    m_shooter = shooter;
-    addRequirements(m_shooter);
+import edu.wpi.first.wpilibj2.command.CommandBase;
+
+/** An example command that uses an example subsystem. */
+public class ShooterCommand extends CommandBase {
+
+  private final ShooterSubsystem shooterSubsystem;
+  private final boolean run;
+
+
+  @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
+
+
+  /**
+   * Creates a new ExampleCommand.
+   *
+   * @param subsystem The subsystem used by this command.
+   */
+  public ShooterCommand(ShooterSubsystem shooterSubsystem, boolean run) {
+    this.run = run;
+    this.shooterSubsystem = shooterSubsystem;
+    // Use addRequirements() here to declare subsystem dependencies.
+    addRequirements(shooterSubsystem);
   }
 
-
+  // Called when the command is initially scheduled.
   @Override
-  public void initialize() {}
+  public void initialize() {
+    System.out.println("ShooterCommand started");
+  }
 
-
+  // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    m_shooter.runShooter(m_speed);
+    shooterSubsystem.setPosition(run);
   }
 
-
+  // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    m_shooter.runShooter(0);
-
+    System.out.println("ShooterCommand ended");
   }
 
-
+  // Returns true when the command should end.
   @Override
   public boolean isFinished() {
     return false;
