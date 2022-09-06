@@ -35,10 +35,9 @@ public final class Constants {
     }
  
     public final static class ShooterConstants {
-    public static final int kShooterMotor1Port = 0;
-    public static final InvertType kShooterInvertedMode1 = null;
-    public static InvertType kShooterInvertedMode;
-    public static int kShooterMotorPort;
+    public static final int SHOOTER_DRIVE_ID = 0;
+    public static final double SHOOTER_ON_SPEED = ;
+    public static final double SHOOTER_OFF_SPEED = ;
 }
 
 public final class PS4ControllerButton{
